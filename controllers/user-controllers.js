@@ -16,6 +16,10 @@ const userController = {
         .populate({
             path: 'thoughts',
             select: '-__v'
+        },
+        {
+            path: 'friends',
+            select: "-__vS"
         })
         .select('__v')
         .sort({ _id: -1 })
@@ -32,9 +36,13 @@ const userController = {
             .populate({
                 path: 'thoughts',
                 select: '-__v'
+            },
+            {
+                path: 'friends',
+                select: '-__v'
             })
             .select('-__v')
-            then(dbUserData => {
+            .then(dbUserData => {
                 if(!dbUserData) {
                     res.status(404).json({ message: 'No user with that ID.'});
                     return;

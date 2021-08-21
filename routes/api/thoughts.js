@@ -4,7 +4,9 @@ const {
     getThoughtById,
     postThought,
     updateThought,
-    deleteThought
+    deleteThought,
+    addReaction,
+    deleteReaction
 } = require('../../controllers/thought-controllers');
 
 router
