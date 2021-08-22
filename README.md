@@ -1,5 +1,7 @@
 # Social network api
 
+https://www.youtube.com/watch?v=L0tXAL3jdmU
+
 ## description
 The social network API demonstrates how a social network works on the back end. It uses the technologies mongoDB and mongoose.
 building the routes to handle thoughts, users, reactions, and friend requests. this api can handle the complex relations that 
