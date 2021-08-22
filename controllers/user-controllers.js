@@ -80,7 +80,15 @@ const userController = {
                 res.status(404).json({ message: 'No user found with that id.'});
                 return;
             }
-            res.json(dbUserData);
+            User.findOneAndUpdate( { _id: params.friendId }, {$addToSet: {friends: params.userId } }, { new: true } )
+            .then(friendData => {
+                if(!friendData) {
+                    res.status(404).json({ message: 'Couldnt find a user with that id.'});
+                    return;
+                }
+                res.json(dbUserData);
+                    console.log('success')
+                })
         })
         .catch(err => res.json(err));
     },

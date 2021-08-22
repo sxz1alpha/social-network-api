@@ -3,14 +3,14 @@ const { Thought, User } = require('../models');
 const thoughtController = {
 
     //===================================create================================
-    postThought({ params, body }, res) {
+    postThought({ body }, res) {
         Thought.create(body)
-            .then(({ _id }) => {
+            .then(bodyData => {
                 return User.findOneAndUpdate(
-                    { _id: params.userId }, 
+                    { _id: bodyData.userId }, 
                     { $push: { thoughts: _id } }, 
-                    { new: true } )
-                
+                    { new: true } 
+                )                
             })
             .then(dbUserData => {
                 if(!dbUserData) {
@@ -20,6 +20,7 @@ const thoughtController = {
                 res.json(dbUserData);
             })
             .catch(err => res.json(err));
+
     },
     //====================================read=================================
     getAllThoughts(req, res) {
@@ -48,7 +49,7 @@ const thoughtController = {
                     res.status(404).json({ message: 'No thought found with that id.'});
                     return;
                 }
-                res.json(dbUserData);
+                res.json(dbThoughtData);
             })
             .catch(err => {
                 console.log(err);
@@ -70,7 +71,7 @@ const thoughtController = {
     },
     //===================================delete================================
     deleteThought({ params }, res) {
-        Thought.findOneAndDelete({ _id: params.thoughtId })
+        Thought.findOneAndDelete({ _id: params.id })
             .then(deletedThought => {
                 if(!deletedThought) {
                     return res.status(404).json({ message: 'No thought found with this id! '});
