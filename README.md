@@ -1,2 +1,14 @@
-# social-network-api
-GIVEN a social network API WHEN I enter the command to invoke the application THEN my server is started and the Mongoose models are synced to the MongoDB database WHEN I open API GET routes in Insomnia Core for users and thoughts THEN the data for each of these routes is displayed in a formatted JSON WHEN I test API POST, PUT, and DELETE routes in Insomnia Core THEN I am able to successfully create, update, and delete users and thoughts in my database WHEN I test API POST and DELETE routes in Insomnia Core THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
+# Social network api
+
+## description
+The social network API demonstrates how a social network works on the back end. It uses the technologies mongoDB and mongoose.
+building the routes to handle thoughts, users, reactions, and friend requests. this api can handle the complex relations that 
+make social media a possability.
+
+## install
+
+clone the git repo to your local machine.
+open a command prompt at the root directory of the social network file
+run the command "npm install"
+test it with insomnia core.
+## picture of api working
